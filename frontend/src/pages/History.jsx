@@ -21,7 +21,7 @@ export default function History() {
 
   const fetchHistory = async (user) => {
     try {
-      const response = await axios.get(`http://localhost:8000/users/${user}/history`);
+      const response = await axios.get(`/users/${user}/history`);
       setHistory(response.data);
     } catch (error) {
       console.error("Failed to fetch history", error);

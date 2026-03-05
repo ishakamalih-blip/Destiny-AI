@@ -32,7 +32,7 @@ export default function Chat() {
       const savedAnalysis = localStorage.getItem('latestAnalysis');
       const analysisContext = savedAnalysis ? JSON.parse(savedAnalysis) : null;
 
-      const response = await axios.post('http://localhost:8000/chat', { 
+      const response = await axios.post('/chat', { 
         message: userMsg.text,
         context: analysisContext
       });

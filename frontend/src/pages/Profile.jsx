@@ -61,7 +61,7 @@ export default function Profile() {
         profile_photo: profilePhotoBase64 || undefined
       };
 
-      await axios.put('http://localhost:8080/users/update', payload);
+      await axios.put('/users/update', payload);
       
       // Update localStorage
       localStorage.setItem('user_email', email);
@@ -115,7 +115,7 @@ export default function Profile() {
     
     setDeleteLoading(true);
     try {
-        await axios.delete('http://localhost:8000/users/delete', {
+        await axios.delete('/users/delete', {
             data: {
                 username: username,
                 password: deletePassword

@@ -14,7 +14,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    const endpoint = isLogin ? 'http://localhost:8080/login' : 'http://localhost:8080/register';
+    const endpoint = isLogin ? '/login' : '/register';
     
     try {
       const response = await axios.post(endpoint, { username, password }, {

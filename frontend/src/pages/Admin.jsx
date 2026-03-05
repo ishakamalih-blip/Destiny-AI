@@ -21,7 +21,7 @@ export default function Admin() {
 
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/admin/users');
+        const response = await axios.get('/admin/users');
         setUsers(response.data);
       } catch (error) {
         console.error("Failed to fetch users", error);
@@ -43,7 +43,7 @@ export default function Admin() {
     try {
         const adminUsername = localStorage.getItem('user_name');
         
-        await axios.delete('http://localhost:8000/admin/users/delete', {
+        await axios.delete('/admin/users/delete', {
             data: {
                 admin_username: adminUsername,
                 admin_password: adminPassword,
