@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { Calendar, Activity, Brain, Heart, Clock, Search, ChevronRight } from 'lucide-react';
+import { Calendar, Activity, Brain, Heart, Clock, Search, ChevronRight, RotateCcw } from 'lucide-react';
 
 export default function History() {
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState('');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const user = localStorage.getItem('user_name');
@@ -16,15 +17,20 @@ export default function History() {
       fetchHistory(user);
     } else {
       setLoading(false);
+      setError('No user logged in');
     }
   }, []);
 
   const fetchHistory = async (user) => {
     try {
+      console.log('Fetching history for user:', user);
       const response = await axios.get(`/users/${user}/history`);
+      console.log('History response:', response.data);
       setHistory(response.data);
-    } catch (error) {
-      console.error("Failed to fetch history", error);
+      setError(null);
+    } catch (err) {
+      console.error("Failed to fetch history", err);
+      setError(err.response?.data?.detail || err.message || 'Failed to fetch history');
     } finally {
       setLoading(false);
     }
@@ -48,8 +54,17 @@ export default function History() {
             Archive of your biometric scans and reports
           </p>
         </div>
-        <div className="p-3 bg-blue-500/10 rounded-full border border-blue-500/30">
-          <Clock className="w-8 h-8 text-blue-400" />
+        <div className="flex items-center gap-4">
+          <button 
+            onClick={() => { setLoading(true); setError(null); if (username) fetchHistory(username); }}
+            className="p-3 bg-blue-500/20 hover:bg-blue-500/40 border border-blue-500/30 rounded-full transition-all duration-300"
+            title="Refresh history"
+          >
+            <RotateCcw className="w-5 h-5 text-blue-400 hover:rotate-180 transition-transform duration-500" />
+          </button>
+          <div className="p-3 bg-blue-500/10 rounded-full border border-blue-500/30">
+            <Clock className="w-8 h-8 text-blue-400" />
+          </div>
         </div>
       </header>
 
@@ -57,6 +72,19 @@ export default function History() {
         <div className="text-center py-12">
            <div className="animate-spin w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"></div>
            <p className="text-cyber-dim font-mono animate-pulse">Retrieving encrypted archives...</p>
+        </div>
+      ) : error ? (
+        <div className="glass-panel p-12 rounded-xl border border-red-500/30 bg-red-500/5">
+           <div className="w-20 h-20 bg-cyber-dark/50 rounded-full flex items-center justify-center mx-auto mb-6 border border-red-500/20">
+             <span className="text-red-400 text-3xl">!</span>
+           </div>
+           <h3 className="text-xl text-red-400 font-sci mb-2">Error Loading History</h3>
+           <p className="text-red-300 max-w-md mx-auto mb-4">
+             {error}
+           </p>
+           <button onClick={() => { setLoading(true); setError(null); if (username) fetchHistory(username); }} className="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded uppercase tracking-widest transition-colors text-sm">
+             Retry
+           </button>
         </div>
       ) : history.length === 0 ? (
         <div className="glass-panel p-12 text-center rounded-xl border border-blue-500/20">
