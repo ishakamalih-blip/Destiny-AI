@@ -1,0 +1,60 @@
+[
+    {
+        "username": "hardik",
+        "password": "hardik",
+        "email": "hardik@biometric-ai.io",
+        "role": "user",
+        "palm_data": {
+            "cognitive_profile": {
+                "focus": "High",
+                "resilience": "High",
+                "intellect_type": "Analytical"
+            },
+            "emotional_profile": {
+                "emotional_intelligence": "Moderate",
+                "stability": "Stable"
+            },
+            "extracted_data": {
+                "vitality_index": 8,
+                "cognitive_index": 9,
+                "emotional_index": 7
+            },
+            "suggestions": [
+                "Your strong cognitive mapping suggests success in complex problem-solving.",
+                "Maintain your high focus levels."
+            ]
+        }
+    },
+    {
+        "username": "admin",
+        "password": "admin",
+        "email": "admin@biometric-ai.io",
+        "role": "admin"
+    },
+    {
+        "username": "isha",
+        "password": "isha",
+        "email": "isha@biometric-ai.io",
+        "role": "user",
+        "palm_data": {
+            "cognitive_profile": {
+                "focus": "Very High",
+                "resilience": "Excellent",
+                "intellect_type": "Creative"
+            },
+            "emotional_profile": {
+                "emotional_intelligence": "High",
+                "stability": "Very Stable"
+            },
+            "extracted_data": {
+                "vitality_index": 9,
+                "cognitive_index": 8,
+                "emotional_index": 8
+            },
+            "suggestions": [
+                "Your creative intelligence is exceptional.",
+                "Focus on collaborative projects to maximize potential."
+            ]
+        }
+    }
+]

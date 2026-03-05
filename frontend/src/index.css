@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyber-black text-cyber-text font-tech overflow-hidden;
+    background-image: radial-gradient(circle at 50% 50%, #0a0a1a 0%, #050510 100%);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sci tracking-wider text-cyber-primary drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)];
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-cyber-dark/40 backdrop-blur-md border border-cyber-primary/20 shadow-lg shadow-cyber-primary/5 rounded-xl;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-2 bg-gradient-to-r from-cyber-dark to-cyber-black border border-cyber-primary text-cyber-primary font-bold uppercase tracking-widest hover:bg-cyber-primary hover:text-cyber-black transition-all duration-500 shadow-[0_0_15px_rgba(0,210,255,0.1)] hover:shadow-neon-blue rounded-sm relative overflow-hidden;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2 bg-transparent border border-cyber-secondary text-cyber-secondary font-bold uppercase tracking-widest hover:bg-cyber-secondary hover:text-white transition-all duration-300 shadow-[0_0_10px_rgba(157,80,187,0.2)] hover:shadow-neon-purple rounded-sm;
+  }
+
+  .input-field {
+    @apply w-full bg-cyber-black/50 border border-cyber-dim/30 text-cyber-text px-4 py-3 focus:outline-none focus:border-cyber-primary focus:shadow-[0_0_10px_rgba(0,210,255,0.3)] transition-all duration-300 rounded-md font-mono;
+  }
+}
+
+/* Grid Animation */
+.grid-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to right, rgba(0, 210, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 210, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050510; 
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a2e; 
+  border: 1px solid #00d2ff;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00d2ff; 
+  box-shadow: 0 0 10px #00d2ff;
+}

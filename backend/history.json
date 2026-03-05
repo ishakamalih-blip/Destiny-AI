@@ -1,0 +1,107 @@
+[
+    {
+        "username": "isha",
+        "filename": "IMG_20220729_121533.jpg",
+        "features": {
+            "vitality_index": 9,
+            "cognitive_index": 8,
+            "emotional_index": 8
+        },
+        "predictions": {
+            "cognitive_profile": {
+                "focus": "Very High",
+                "resilience": "Excellent",
+                "intellect_type": "Creative"
+            },
+            "emotional_profile": {
+                "emotional_intelligence": "High",
+                "stability": "Very Stable"
+            }
+        },
+        "timestamp": "2026-01-29"
+    },
+    {
+        "username": "isha",
+        "filename": "WhatsApp Image 2025-11-13 at 17.50.53_3aac92ef.jpg",
+        "features": {
+            "vitality_index": 10,
+            "cognitive_index": 10,
+            "emotional_index": 10
+        },
+        "predictions": {
+            "cognitive_profile": {
+                "focus": "Exceptional",
+                "resilience": "Outstanding",
+                "intellect_type": "Genius"
+            },
+            "emotional_profile": {
+                "emotional_intelligence": "Exceptional",
+                "stability": "Perfect"
+            }
+        },
+        "timestamp": "2026-01-29"
+    },
+    {
+        "username": "isha",
+        "filename": "minu.jpg",
+        "features": {
+            "vitality_index": 7,
+            "cognitive_index": 8,
+            "emotional_index": 9
+        },
+        "predictions": {
+            "cognitive_profile": {
+                "focus": "High",
+                "resilience": "Good",
+                "intellect_type": "Analytical"
+            },
+            "emotional_profile": {
+                "emotional_intelligence": "High",
+                "stability": "Stable"
+            }
+        },
+        "timestamp": "2026-01-29"
+    },
+    {
+        "username": "isha",
+        "filename": "scan_latest.jpg",
+        "features": {
+            "vitality_index": 4,
+            "cognitive_index": 4,
+            "emotional_index": 4
+        },
+        "predictions": {
+            "cognitive_profile": {
+                "focus": "Moderate",
+                "resilience": "Average",
+                "intellect_type": "Balanced"
+            },
+            "emotional_profile": {
+                "emotional_intelligence": "Moderate",
+                "stability": "Normal"
+            }
+        },
+        "timestamp": "2026-01-29"
+    },
+    {
+        "username": "hardik",
+        "filename": "hardik_scan_001.jpg",
+        "features": {
+            "vitality_index": 8,
+            "cognitive_index": 9,
+            "emotional_index": 7
+        },
+        "predictions": {
+            "cognitive_profile": {
+                "focus": "High",
+                "resilience": "High",
+                "intellect_type": "Analytical"
+            },
+            "emotional_profile": {
+                "emotional_intelligence": "Moderate",
+                "stability": "Stable"
+            }
+        },
+        "timestamp": "2026-01-29"
+    }
+]

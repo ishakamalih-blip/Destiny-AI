@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+reportlab
+python-multipart
+pydantic
+motor
+python-dotenv
+pytest
+httpx
+passlib[bcrypt]
+opencv-python
+numpy
+pillow
+i18n

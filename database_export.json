@@ -1,0 +1,514 @@
+{
+  "export_date": "2026-02-17T11:12:20.170605",
+  "users": [
+    {
+      "_id": "6988667ba8eee8e333df3056",
+      "username": "hardik",
+      "password": "$2b$12$HvWI74Q36UXaaZwCbZhpuuuL9WMk.NvyPORCc9.9vXZD1G/dQipn2",
+      "email": "hardik@biometric-ai.io",
+      "role": "user",
+      "palm_data": {
+        "cognitive_profile": {
+          "focus": "High",
+          "resilience": "High",
+          "intellect_type": "Analytical"
+        },
+        "emotional_profile": {
+          "emotional_intelligence": "Moderate",
+          "stability": "Stable"
+        },
+        "extracted_data": {
+          "vitality_index": 8,
+          "cognitive_index": 9,
+          "emotional_index": 7
+        },
+        "suggestions": [
+          "Your strong cognitive mapping suggests success in complex problem-solving.",
+          "Maintain your high focus levels."
+        ]
+      }
+    },
+    {
+      "_id": "6988667ba8eee8e333df3057",
+      "username": "admin",
+      "password": "$2b$12$gSv.9jEwHzKtxN34BI.rmeloCutiEFwH3.deUIMgFVurNwGifhzzO",
+      "email": "admin@biometric-ai.io",
+      "role": "admin"
+    },
+    {
+      "_id": "698ac71485089579e17936e9",
+      "username": "satwikkkkkk",
+      "password": "$2b$12$ZeRjtObyBzIH6rLcNUN0Keh8qArsLW4TB.mnzE6ao7RQfdmsmvBOO",
+      "email": "satwikkkkkk@biometric-ai.io",
+      "role": "user"
+    },
+    {
+      "_id": "698ac89585089579e17936ed",
+      "username": "satwikkkk",
+      "password": "$2b$12$ZcFdNsjXoKw5fEfBfmf3/ufos8gReN3xXraz1oXYaZGAFcvUd6Y02",
+      "email": "satwikkkk@biometric-ai.io",
+      "role": "user",
+      "palm_data": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Robust physical foundation",
+          "thinking_ability": "Intuitive & Pattern-based",
+          "iq_type": "Applied cognitive intelligence"
+        },
+        "emotional_profile": {
+          "eq_level": "Adaptive social learning",
+          "stability": "Fluid",
+          "relationship_dynamic": "Resilient Partnership",
+          "sense_of_humor": "Expressive & Joyful"
+        },
+        "behavioral_profile": {
+          "type": "Proactive & Driven",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Leverage your applied cognitive intelligence for specialized problem solving.",
+          "In relationships, you tend to be resilient partnership.",
+          "Focus on integrating your cognitive and emotional strengths for better balance."
+        ],
+        "extracted_data": {
+          "vitality_index": 8,
+          "cognitive_index": 4,
+          "emotional_index": 5,
+          "confidence": 1.01
+        },
+        "ai_confidence": 1.01
+      }
+    },
+    {
+      "_id": "6991bba676e54283a0d774b1",
+      "username": "isha",
+      "password": "$2b$12$0fcRDheo7O58ga/bEjdOtOPUSobme2NoyYqsjdddTdjCWPWIbtlGq",
+      "email": "isha@biometric-ai.io",
+      "role": "user"
+    },
+    {
+      "_id": "6991bbb976e54283a0d774b2",
+      "username": "shubh",
+      "password": "isha",
+      "email": "shubh@biometric-ai.io",
+      "role": "user",
+      "palm_data": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Robust physical foundation",
+          "thinking_ability": "Intuitive & Pattern-based",
+          "iq_type": "Operational problem solving"
+        },
+        "emotional_profile": {
+          "eq_level": "Evolving emotional intelligence",
+          "stability": "Fluid",
+          "relationship_dynamic": "Independent & Strong-willed",
+          "sense_of_humor": "Expressive & Joyful"
+        },
+        "behavioral_profile": {
+          "type": "Proactive & Driven",
+          "career_guidance": "Engineering & Systems"
+        },
+        "suggestions": [
+          "Your robust physical foundation indicates a strong capacity for high-pressure tasks.",
+          "Consider a career in Engineering & Systems for optimal professional growth.",
+          "Your intuitive & pattern-based style is a key asset in complex environments."
+        ],
+        "extracted_data": {
+          "vitality_index": 8,
+          "cognitive_index": 5,
+          "emotional_index": 5,
+          "confidence": 0.89
+        },
+        "ai_confidence": 0.89
+      }
+    }
+  ],
+  "analysis_history": [
+    {
+      "_id": "697b2c47257c4e051ff70e1c",
+      "username": "isha",
+      "filename": "palm-1.jpg",
+      "features": {
+        "vitality_index": 4,
+        "cognitive_index": 4,
+        "emotional_index": 4,
+        "confidence": 0.02
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Moderate",
+          "thinking_ability": "Intuitive",
+          "iq_type": "Practical"
+        },
+        "emotional_profile": {
+          "eq_level": "Developing",
+          "stability": "Fluid",
+          "relationship_dynamic": "Independent & Strong-willed",
+          "sense_of_humor": "Playful & Lighthearted"
+        },
+        "behavioral_profile": {
+          "type": "Adaptable & Fluid",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Your intuitive thinking style is a key asset in complex environments.",
+          "In relationships, you tend to be independent & strong-willed.",
+          "Consider a career in Technical Operations for optimal professional growth."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "697b2cbe257c4e051ff70e1d",
+      "username": "isha",
+      "filename": "palm-1.jpg",
+      "features": {
+        "vitality_index": 4,
+        "cognitive_index": 4,
+        "emotional_index": 4,
+        "confidence": 0.02
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Moderate",
+          "thinking_ability": "Intuitive",
+          "iq_type": "Practical"
+        },
+        "emotional_profile": {
+          "eq_level": "Developing",
+          "stability": "Fluid",
+          "relationship_dynamic": "Independent & Strong-willed",
+          "sense_of_humor": "Playful & Lighthearted"
+        },
+        "behavioral_profile": {
+          "type": "Adaptable & Fluid",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Your intuitive thinking style is a key asset in complex environments.",
+          "In relationships, you tend to be independent & strong-willed.",
+          "Consider a career in Technical Operations for optimal professional growth."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "698ac76685089579e17936ea",
+      "username": "isha",
+      "filename": "WhatsApp Image 2025-11-13 at 17.50.11_fd184288.jpg",
+      "features": {
+        "vitality_index": 4,
+        "cognitive_index": 7,
+        "emotional_index": 4,
+        "confidence": 0.04
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Moderate",
+          "thinking_ability": "Logical & Linear",
+          "iq_type": "Creative"
+        },
+        "emotional_profile": {
+          "eq_level": "Developing",
+          "stability": "Fluid",
+          "relationship_dynamic": "Independent & Strong-willed",
+          "sense_of_humor": "Observational"
+        },
+        "behavioral_profile": {
+          "type": "Adaptable & Fluid",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Your logical & linear thinking style is a key asset in complex environments.",
+          "In relationships, you tend to be independent & strong-willed.",
+          "Consider a career in Technical Operations for optimal professional growth."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "698ac77a85089579e17936eb",
+      "username": "isha",
+      "filename": "WhatsApp Image 2025-11-13 at 17.50.11_fd184288.jpg",
+      "features": {
+        "vitality_index": 4,
+        "cognitive_index": 7,
+        "emotional_index": 4,
+        "confidence": 0.04
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Moderate",
+          "thinking_ability": "Logical & Linear",
+          "iq_type": "Creative"
+        },
+        "emotional_profile": {
+          "eq_level": "Developing",
+          "stability": "Fluid",
+          "relationship_dynamic": "Independent & Strong-willed",
+          "sense_of_humor": "Observational"
+        },
+        "behavioral_profile": {
+          "type": "Adaptable & Fluid",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Your logical & linear thinking style is a key asset in complex environments.",
+          "In relationships, you tend to be independent & strong-willed.",
+          "Consider a career in Technical Operations for optimal professional growth."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "698ac7d585089579e17936ec",
+      "username": "isha",
+      "filename": "WhatsApp Image 2025-11-13 at 17.50.53_3aac92ef.jpg",
+      "features": {
+        "vitality_index": 4,
+        "cognitive_index": 4,
+        "emotional_index": 4,
+        "confidence": 0.03
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Moderate",
+          "thinking_ability": "Intuitive",
+          "iq_type": "Practical"
+        },
+        "emotional_profile": {
+          "eq_level": "Developing",
+          "stability": "Fluid",
+          "relationship_dynamic": "Independent & Strong-willed",
+          "sense_of_humor": "Playful & Lighthearted"
+        },
+        "behavioral_profile": {
+          "type": "Adaptable & Fluid",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Your intuitive thinking style is a key asset in complex environments.",
+          "In relationships, you tend to be independent & strong-willed.",
+          "Consider a career in Technical Operations for optimal professional growth."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "698ac8b085089579e17936ee",
+      "username": "satwikkkk",
+      "filename": "shivshakti.jpg",
+      "features": {
+        "vitality_index": 6,
+        "cognitive_index": 7,
+        "emotional_index": 4,
+        "confidence": 0.07
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Moderate",
+          "thinking_ability": "Logical & Linear",
+          "iq_type": "Creative"
+        },
+        "emotional_profile": {
+          "eq_level": "Developing",
+          "stability": "Fluid",
+          "relationship_dynamic": "Independent & Strong-willed",
+          "sense_of_humor": "Observational"
+        },
+        "behavioral_profile": {
+          "type": "Adaptable & Fluid",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Your logical & linear thinking style is a key asset in complex environments.",
+          "In relationships, you tend to be independent & strong-willed.",
+          "Consider a career in Technical Operations for optimal professional growth."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "698ac8ca85089579e17936ef",
+      "username": "isha",
+      "filename": "minu.jpg",
+      "features": {
+        "vitality_index": 4,
+        "cognitive_index": 4,
+        "emotional_index": 4,
+        "confidence": 0.03
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Moderate",
+          "thinking_ability": "Intuitive",
+          "iq_type": "Practical"
+        },
+        "emotional_profile": {
+          "eq_level": "Developing",
+          "stability": "Fluid",
+          "relationship_dynamic": "Independent & Strong-willed",
+          "sense_of_humor": "Playful & Lighthearted"
+        },
+        "behavioral_profile": {
+          "type": "Adaptable & Fluid",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Your intuitive thinking style is a key asset in complex environments.",
+          "In relationships, you tend to be independent & strong-willed.",
+          "Consider a career in Technical Operations for optimal professional growth."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "698ac97099a64a198cfeb1a1",
+      "username": "isha",
+      "filename": "minu.jpg",
+      "features": {
+        "vitality_index": 7,
+        "cognitive_index": 8,
+        "emotional_index": 9,
+        "confidence": 0.88
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "High",
+          "resilience": "Stable physical baseline",
+          "thinking_ability": "Sequential Processing",
+          "iq_type": "Lateral thinking capability"
+        },
+        "emotional_profile": {
+          "eq_level": "Superior empathetic processing",
+          "stability": "Stable",
+          "relationship_dynamic": "Harmony Oriented",
+          "sense_of_humor": "Observational & Contextual"
+        },
+        "behavioral_profile": {
+          "type": "Reflective & Methodical",
+          "career_guidance": "Media & Communication"
+        },
+        "suggestions": [
+          "Focus on integrating your cognitive and emotional strengths for better balance.",
+          "Leverage your lateral thinking capability for specialized problem solving.",
+          "Your observational & contextual helps in maintaining social cohesion."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "698ac98899a64a198cfeb1a2",
+      "username": "isha",
+      "filename": "WhatsApp Image 2025-11-13 at 17.50.53_3aac92ef.jpg",
+      "features": {
+        "vitality_index": 10,
+        "cognitive_index": 7,
+        "emotional_index": 10,
+        "confidence": 0.91
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Robust physical foundation",
+          "thinking_ability": "Step-by-step Analysis",
+          "iq_type": "Strong creative synthesis"
+        },
+        "emotional_profile": {
+          "eq_level": "Highly attuned emotional intelligence",
+          "stability": "Stable",
+          "relationship_dynamic": "Harmony Oriented",
+          "sense_of_humor": "Social Irony"
+        },
+        "behavioral_profile": {
+          "type": "Proactive & Driven",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Consider a career in Technical Operations for optimal professional growth.",
+          "Your step-by-step analysis style is a key asset in complex environments.",
+          "Leverage your strong creative synthesis for specialized problem solving."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "698acad999a64a198cfeb1a3",
+      "username": "satwikkkk",
+      "filename": "webcam-capture.jpg",
+      "features": {
+        "vitality_index": 8,
+        "cognitive_index": 4,
+        "emotional_index": 5,
+        "confidence": 1.01
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Robust physical foundation",
+          "thinking_ability": "Intuitive & Pattern-based",
+          "iq_type": "Applied cognitive intelligence"
+        },
+        "emotional_profile": {
+          "eq_level": "Adaptive social learning",
+          "stability": "Fluid",
+          "relationship_dynamic": "Resilient Partnership",
+          "sense_of_humor": "Expressive & Joyful"
+        },
+        "behavioral_profile": {
+          "type": "Proactive & Driven",
+          "career_guidance": "Technical Operations"
+        },
+        "suggestions": [
+          "Leverage your applied cognitive intelligence for specialized problem solving.",
+          "In relationships, you tend to be resilient partnership.",
+          "Focus on integrating your cognitive and emotional strengths for better balance."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    },
+    {
+      "_id": "698acc2899a64a198cfeb1a4",
+      "username": "isha",
+      "filename": "IMG_20220729_121533.jpg",
+      "features": {
+        "vitality_index": 8,
+        "cognitive_index": 5,
+        "emotional_index": 5,
+        "confidence": 0.89
+      },
+      "predictions": {
+        "cognitive_profile": {
+          "focus": "Moderate",
+          "resilience": "Robust physical foundation",
+          "thinking_ability": "Intuitive & Pattern-based",
+          "iq_type": "Operational problem solving"
+        },
+        "emotional_profile": {
+          "eq_level": "Evolving emotional intelligence",
+          "stability": "Fluid",
+          "relationship_dynamic": "Independent & Strong-willed",
+          "sense_of_humor": "Expressive & Joyful"
+        },
+        "behavioral_profile": {
+          "type": "Proactive & Driven",
+          "career_guidance": "Engineering & Systems"
+        },
+        "suggestions": [
+          "Your robust physical foundation indicates a strong capacity for high-pressure tasks.",
+          "Consider a career in Engineering & Systems for optimal professional growth.",
+          "Your intuitive & pattern-based style is a key asset in complex environments."
+        ]
+      },
+      "timestamp": "2026-01-29"
+    }
+  ]
+}
