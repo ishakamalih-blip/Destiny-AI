@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+from fastapi import FastAPI, HTTPException, status, File, UploadFile
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, BeforeValidator
@@ -14,24 +15,6 @@ import motor.motor_asyncio
 from dotenv import load_dotenv
 
 load_dotenv()
-
-app = FastAPI(title="BIOMETRIC AI API", description="Backend for Biological Pattern Recognition and Behavioral Modeling", lifespan=lifespan)
-
-# CORS Setup
-origins = [
-    "http://localhost:5173",  # React port
-    "http://localhost:5174",  # React alternate port
-    "http://127.0.0.1:5173",
-    "http://127.0.0.1:5174",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 # Database Setup
 MONGO_URI = os.getenv("MONGO_URI", "mongodb://localhost:27017")
@@ -152,6 +135,24 @@ async def lifespan(app: FastAPI):
 
     # Shutdown code (if needed)
     pass
+
+app = FastAPI(title="BIOMETRIC AI API", description="Backend for Biological Pattern Recognition and Behavioral Modeling", lifespan=lifespan)
+
+# CORS Setup
+origins = [
+    "http://localhost:5173",  # React port
+    "http://localhost:5174",  # React alternate port
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Endpoints
 
