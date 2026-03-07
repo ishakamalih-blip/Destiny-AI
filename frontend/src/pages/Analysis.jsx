@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { Activity, Zap, Heart, Brain, Download, Cpu, Shield, Upload, Scan, FileText } from 'lucide-react';
+import { Activity, Zap, Heart, Brain, Download, Cpu, Shield, Upload, Scan, FileText, Camera } from 'lucide-react';
+import CameraCapture from '../components/CameraCapture';
 
 export default function Analysis() {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -9,6 +10,7 @@ export default function Analysis() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [extractedData, setExtractedData] = useState(null);
+  const [showCamera, setShowCamera] = useState(false);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -18,6 +20,14 @@ export default function Analysis() {
       setResult(null);
       setExtractedData(null);
     }
+  };
+
+  const handleCameraCapture = (file) => {
+    setSelectedFile(file);
+    setPreviewUrl(URL.createObjectURL(file));
+    setResult(null);
+    setExtractedData(null);
+    setShowCamera(false);
   };
 
   const handleAnalyze = async () => {
@@ -223,6 +233,20 @@ export default function Analysis() {
           </div>
         </div>
       </div>
+
+      {showCamera && (
+        <CameraCapture
+          onCapture={handleCameraCapture}
+          onClose={() => setShowCamera(false)}
+        />
+      )}
+
+      {showCamera && (
+        <CameraCapture
+          onCapture={handleCameraCapture}
+          onClose={() => setShowCamera(false)}
+        />
+      )}
     </div>
   );
 }

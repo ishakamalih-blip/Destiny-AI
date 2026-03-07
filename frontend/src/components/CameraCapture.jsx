@@ -1,0 +1,139 @@
+import { useState, useRef, useEffect } from 'react';
+import { Camera, X, RotateCcw } from 'lucide-react';
+
+const CameraCapture = ({ onCapture, onClose }) => {
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const [stream, setStream] = useState(null);
+  const [error, setError] = useState(null);
+  const [captured, setCaptured] = useState(false);
+
+  useEffect(() => {
+    const startCamera = async () => {
+      try {
+        const mediaStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'user' } // Use front camera for palm scanning
+        });
+        setStream(mediaStream);
+        if (videoRef.current) {
+          videoRef.current.srcObject = mediaStream;
+        }
+      } catch (err) {
+        setError('Camera access denied or not available');
+        console.error('Camera error:', err);
+      }
+    };
+
+    startCamera();
+
+    return () => {
+      if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+      }
+    };
+  }, []);
+
+  const captureImage = () => {
+    if (!videoRef.current || !canvasRef.current) return;
+
+    const video = videoRef.current;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0);
+
+    canvas.toBlob((blob) => {
+      const file = new File([blob], 'palm_capture.jpg', { type: 'image/jpeg' });
+      onCapture(file);
+      setCaptured(true);
+    }, 'image/jpeg', 0.8);
+  };
+
+  const retake = () => {
+    setCaptured(false);
+  };
+
+  const closeCamera = () => {
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+    }
+    onClose();
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+      <div className="bg-gray-900 rounded-lg p-6 max-w-md w-full mx-4">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-white text-lg font-semibold">Palm Scanner</h3>
+          <button
+            onClick={closeCamera}
+            className="text-gray-400 hover:text-white"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        {error ? (
+          <div className="text-red-400 text-center py-8">
+            {error}
+            <br />
+            <button
+              onClick={closeCamera}
+              className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="relative mb-4">
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted
+                className={`w-full rounded ${captured ? 'hidden' : 'block'}`}
+              />
+              <canvas
+                ref={canvasRef}
+                className={`w-full rounded ${captured ? 'block' : 'hidden'}`}
+              />
+            </div>
+
+            <div className="flex justify-center gap-4">
+              {!captured ? (
+                <button
+                  onClick={captureImage}
+                  className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  <Camera className="w-5 h-5" />
+                  Capture Palm
+                </button>
+              ) : (
+                <>
+                  <button
+                    onClick={retake}
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+                  >
+                    <RotateCcw className="w-4 h-4" />
+                    Retake
+                  </button>
+                  <button
+                    onClick={closeCamera}
+                    className="px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                  >
+                    Use This Image
+                  </button>
+                </>
+              )}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default CameraCapture;
