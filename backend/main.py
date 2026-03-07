@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, status, File, UploadFile
+from contextlib import asynccontextmanager
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, BeforeValidator
@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-app = FastAPI(title="BIOMETRIC AI API", description="Backend for Biological Pattern Recognition and Behavioral Modeling")
+app = FastAPI(title="BIOMETRIC AI API", description="Backend for Biological Pattern Recognition and Behavioral Modeling", lifespan=lifespan)
 
 # CORS Setup
 origins = [
@@ -99,9 +99,9 @@ class AdminDelete(BaseModel):
     admin_password: str
     target_username: str
 
-# Startup Event: Migration
-@app.on_event("startup")
-async def startup_db_client():
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup code
     # 1. Check if DB is empty, if so, migrate from JSON
     count = await users_collection.count_documents({})
     if count == 0 and os.path.exists("users.json"):
@@ -147,6 +147,11 @@ async def startup_db_client():
         print("Database unique constraints enforced")
     except Exception as e:
         print(f"Index creation failed (possible duplicates): {e}")
+
+    yield
+
+    # Shutdown code (if needed)
+    pass
 
 # Endpoints
 
