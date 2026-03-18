@@ -12,7 +12,7 @@ const CameraCapture = ({ onCapture, onClose }) => {
     const startCamera = async () => {
       try {
         const mediaStream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: 'user' } // Use front camera for palm scanning
+          video: { facingMode: 'environment' } // Use back camera for better palm scanning quality
         });
         setStream(mediaStream);
         if (videoRef.current) {
@@ -74,6 +74,12 @@ const CameraCapture = ({ onCapture, onClose }) => {
             <X className="w-6 h-6" />
           </button>
         </div>
+
+        {!captured && !error && (
+          <div className="mb-4 p-3 bg-blue-900/30 border border-blue-500/50 text-blue-200 text-sm text-center rounded">
+            Position your palm clearly in the frame and ensure good lighting for accurate analysis.
+          </div>
+        )}
 
         {error ? (
           <div className="text-red-400 text-center py-8">

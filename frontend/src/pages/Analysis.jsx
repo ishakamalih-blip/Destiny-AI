@@ -101,7 +101,8 @@ export default function Analysis() {
           </h2>
 
           <div className="flex-1 flex flex-col items-center justify-center space-y-6">
-            <div className="w-full relative group">
+            <div className="flex gap-4 w-full">
+              <div className="flex-1 relative group">
                 <input
                     type="file"
                     accept="image/*"
@@ -109,21 +110,32 @@ export default function Analysis() {
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
                 />
 
-                <div className={`w-full h-64 border-2 border-dashed rounded-xl flex flex-col items-center justify-center transition-all duration-300 relative overflow-hidden ${selectedFile ? 'border-blue-500 bg-cyber-dark/80' : 'border-cyber-dim/30 hover:border-blue-500/50 hover:bg-blue-500/5'}`}>
+                <div className={`w-full h-48 border-2 border-dashed rounded-xl flex flex-col items-center justify-center transition-all duration-300 relative overflow-hidden ${selectedFile ? 'border-blue-500 bg-cyber-dark/80' : 'border-cyber-dim/30 hover:border-blue-500/50 hover:bg-blue-500/5'}`}>
                     {selectedFile ? (
                         <div className="text-center">
-                            <FileText className="w-12 h-12 text-blue-400 mx-auto mb-2" />
-                            <p className="text-blue-400 text-sm font-mono uppercase tracking-wider mb-1">File Selected</p>
-                            <p className="text-cyber-dim text-xs truncate max-w-48">{selectedFile.name}</p>
+                            <FileText className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                            <p className="text-blue-400 text-xs font-mono uppercase tracking-wider mb-1">File Selected</p>
+                            <p className="text-cyber-dim text-xs truncate max-w-32">{selectedFile.name}</p>
                         </div>
                     ) : (
                         <div className="text-center">
-                            <Upload className="w-12 h-12 text-cyber-dim mx-auto mb-2" />
-                            <p className="text-cyber-dim text-sm font-mono uppercase tracking-wider mb-1">Upload Palm Image</p>
-                            <p className="text-cyber-dim/60 text-xs">Click to browse or drag & drop</p>
+                            <Upload className="w-8 h-8 text-cyber-dim mx-auto mb-2" />
+                            <p className="text-cyber-dim text-xs font-mono uppercase tracking-wider mb-1">Upload Image</p>
                         </div>
                     )}
                 </div>
+              </div>
+
+              <div className="flex flex-col justify-center">
+                <div className="text-cyber-dim text-xs uppercase tracking-wider mb-2 text-center">or</div>
+                <button
+                    onClick={() => setShowCamera(true)}
+                    className="px-4 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-bold font-sci tracking-wider rounded-lg transition-all duration-300 flex flex-col items-center shadow-neon-cyan"
+                >
+                    <Camera className="w-6 h-6 mb-1" />
+                    <span className="text-xs">Live Camera</span>
+                </button>
+              </div>
             </div>
 
             {selectedFile && (
@@ -233,13 +245,6 @@ export default function Analysis() {
           </div>
         </div>
       </div>
-
-      {showCamera && (
-        <CameraCapture
-          onCapture={handleCameraCapture}
-          onClose={() => setShowCamera(false)}
-        />
-      )}
 
       {showCamera && (
         <CameraCapture
