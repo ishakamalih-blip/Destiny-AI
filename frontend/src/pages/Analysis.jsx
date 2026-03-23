@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { motion } from 'framer-motion';
 import { Activity, Zap, Heart, Brain, Download, Cpu, Shield, Upload, Scan, FileText, Camera } from 'lucide-react';
 import CameraCapture from '../components/CameraCapture';
 
@@ -9,8 +8,30 @@ export default function Analysis() {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [extractedData, setExtractedData] = useState(null);
   const [showCamera, setShowCamera] = useState(false);
+  const getDescription = (section, label) => {
+    if (!label) return '';
+    const text = String(label).toLowerCase();
+    if (section === 'cognitive') {
+      if (text.includes('logical') || text.includes('linear')) return 'You prefer structured reasoning, sequence-driven problem solving, and clarity in decision-making.';
+      if (text.includes('intuitive')) return 'You identify patterns quickly, trust informed instincts, and synthesize ideas beyond surface signals.';
+      if (text.includes('strategic') || text.includes('abstract')) return 'You model scenarios, weigh trade-offs, and operate with long-range thinking.';
+      return 'Your thinking style supports consistent problem solving and reliable outcomes.';
+    }
+    if (section === 'emotional') {
+      if (text.includes('superior') || text.includes('empathetic')) return 'You read emotional cues rapidly, respond with care, and build trust through supportive communication.';
+      if (text.includes('adaptive')) return 'You adjust your responses to context, maintain balance under stress, and repair relationships effectively.';
+      if (text.includes('stable')) return 'You maintain emotional steadiness and regulate feelings with healthy boundaries.';
+      return 'Your emotional profile supports meaningful connections and steady self-regulation.';
+    }
+    if (section === 'behavioral') {
+      if (text.includes('adaptable') || text.includes('fluid')) return 'You adjust smoothly to changing contexts, remain flexible under pressure, and keep momentum in uncertainty.';
+      if (text.includes('proactive') || text.includes('driven')) return 'You initiate action, sustain focus, and convert plans into measurable progress.';
+      if (text.includes('reflective') || text.includes('methodical')) return 'You plan carefully, optimize processes, and reduce risk through stepwise execution.';
+      return 'Your behavior consistently aligns with goals and context demands.';
+    }
+    return '';
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -18,7 +39,6 @@ export default function Analysis() {
       setSelectedFile(file);
       setPreviewUrl(URL.createObjectURL(file));
       setResult(null);
-      setExtractedData(null);
     }
   };
 
@@ -26,7 +46,6 @@ export default function Analysis() {
     setSelectedFile(file);
     setPreviewUrl(URL.createObjectURL(file));
     setResult(null);
-    setExtractedData(null);
     setShowCamera(false);
   };
 
@@ -35,7 +54,6 @@ export default function Analysis() {
 
     setLoading(true);
     setResult(null);
-    setExtractedData(null);
 
     const username = localStorage.getItem('user_name') || 'guest';
     const formData = new FormData();
@@ -51,7 +69,6 @@ export default function Analysis() {
       });
 
       setResult(response.data);
-      setExtractedData(response.data.extracted_data);
       localStorage.setItem('latestAnalysis', JSON.stringify(response.data));
       setLoading(false);
     } catch (error) {
@@ -62,10 +79,10 @@ export default function Analysis() {
   };
 
   const handleDownloadReport = async () => {
-      if (!extractedData) return;
+      if (!result) return;
 
       try {
-          const response = await axios.post('/report', extractedData, {
+          const response = await axios.post('/report', result, {
               responseType: 'blob'
           });
 
@@ -209,17 +226,26 @@ export default function Analysis() {
                     <div className="space-y-4">
                         <div className="p-4 bg-cyber-dark/30 rounded-lg border border-blue-500/10">
                             <h3 className="text-blue-400 font-sci text-sm uppercase tracking-wider mb-2">Cognitive Profile</h3>
-                            <p className="text-cyber-dim text-sm">{result.cognitive_profile?.thinking_ability || 'Analysis in progress'}</p>
+                      <p className="text-cyber-dim text-sm">{result.cognitive_profile?.thinking_ability || 'Analysis in progress'}</p>
+                      {result.cognitive_profile?.thinking_ability && (
+                        <p className="text-cyber-dim/80 text-xs mt-1">{getDescription('cognitive', result.cognitive_profile.thinking_ability)}</p>
+                      )}
                         </div>
 
                         <div className="p-4 bg-cyber-dark/30 rounded-lg border border-blue-500/10">
                             <h3 className="text-blue-400 font-sci text-sm uppercase tracking-wider mb-2">Emotional Intelligence</h3>
-                            <p className="text-cyber-dim text-sm">{result.emotional_profile?.eq_level || 'Analysis in progress'}</p>
+                      <p className="text-cyber-dim text-sm">{result.emotional_profile?.eq_level || 'Analysis in progress'}</p>
+                      {result.emotional_profile?.eq_level && (
+                        <p className="text-cyber-dim/80 text-xs mt-1">{getDescription('emotional', result.emotional_profile.eq_level)}</p>
+                      )}
                         </div>
 
                         <div className="p-4 bg-cyber-dark/30 rounded-lg border border-blue-500/10">
                             <h3 className="text-blue-400 font-sci text-sm uppercase tracking-wider mb-2">Behavioral Type</h3>
-                            <p className="text-cyber-dim text-sm">{result.behavioral_profile?.type || 'Analysis in progress'}</p>
+                      <p className="text-cyber-dim text-sm">{result.behavioral_profile?.type || 'Analysis in progress'}</p>
+                      {result.behavioral_profile?.type && (
+                        <p className="text-cyber-dim/80 text-xs mt-1">{getDescription('behavioral', result.behavioral_profile.type)}</p>
+                      )}
                         </div>
                     </div>
 

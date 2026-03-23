@@ -1,16 +1,52 @@
-# React + Vite
+# DESTINY AI – Frontend (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, demo‑ready UI for palm analysis with:
+- Image upload and live camera capture
+- AI‑generated analysis with plain‑language descriptions
+- History view of past scans
+- PDF report download
+- Proxy integration to the FastAPI backend
 
-Currently, two official plugins are available:
+## Quick Start
+- Prerequisites: Node.js 18+, npm
+- Install dependencies:
+  - `npm install`
+- Start development server:
+  - `npm run dev`
+- Open the app:
+  - http://localhost:5173/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Backend Integration
+- The frontend proxies API calls to the backend at http://localhost:8000
+- Proxy config is defined in [vite.config.js](./vite.config.js)
+- Recommended: run backend before using analysis and report features
 
-## React Compiler
+## Key Pages
+- Dashboard: navigation to core features
+- Analysis: upload/capture image, run AI analysis, view descriptive results, download PDF
+- History: review past analyses with scores and timestamps
+- Profile: manage account and latest palm report
+- Admin: system metrics and user list (requires admin role)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Demo Flow
+- Login or register any user
+- Go to Analysis:
+  - Upload a palm image or use Live Camera
+  - Click “Analyze Palm”
+  - Review Vitality, Cognitive, Emotional scores
+  - Read the descriptive lines under each card
+  - Click “Download Report” to export a descriptive PDF
+- Open History to review previous scans
 
-## Expanding the ESLint configuration
+## Tech Stack
+- React, Vite, Tailwind CSS, Framer Motion
+- axios, react‑router‑dom, lucide‑react
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Linting
+- Run: `npm run lint`
+- Fix common issues before demo
+
+## Notes
+- SVG icons from lucide‑react and inline SVGs use the standard namespace:
+  - `xmlns="http://www.w3.org/2000/svg"`
+  - Ensures consistent rendering across browsers
