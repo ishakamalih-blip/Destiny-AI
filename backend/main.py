@@ -421,9 +421,21 @@ def generate_report(data: dict):
     c.drawString(100, 710, "1. Biometric Extraction Data")
     c.setFont("Helvetica", 12)
     ed = data.get("extracted_data", {})
-    vs = ed.get("vitality_index", data.get("vitality_index", 0))
-    cs = ed.get("cognitive_index", data.get("cognitive_index", 0))
-    es = ed.get("emotional_index", data.get("emotional_index", 0))
+    vs = ed.get("vitality_index") if ed.get("vitality_index") is not None else (data.get("vitality_index") if data.get("vitality_index") is not None else 0)
+    cs = ed.get("cognitive_index") if ed.get("cognitive_index") is not None else (data.get("cognitive_index") if data.get("cognitive_index") is not None else 0)
+    es = ed.get("emotional_index") if ed.get("emotional_index") is not None else (data.get("emotional_index") if data.get("emotional_index") is not None else 0)
+    try:
+        vs = int(vs)
+    except Exception:
+        vs = 0
+    try:
+        cs = int(cs)
+    except Exception:
+        cs = 0
+    try:
+        es = int(es)
+    except Exception:
+        es = 0
     c.drawString(120, 690, f"Vitality Index: {vs}/10")
     c.drawString(120, 670, f"Cognitive Mapping: {cs}/10")
     c.drawString(120, 650, f"Emotional Intelligence: {es}/10")

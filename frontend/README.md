@@ -1,52 +1,60 @@
-# DESTINY AI – Frontend (React + Vite)
+# Biometric AI – Intelligent Biological Pattern Recognition
 
-A simple, demo‑ready UI for palm analysis with:
-- Image upload and live camera capture
-- AI‑generated analysis with plain‑language descriptions
-- History view of past scans
-- PDF report download
-- Proxy integration to the FastAPI backend
+An industry‑standard AI project utilizing Computer Vision and Machine Learning to analyze human palm biological patterns for behavioral profiling and cognitive modeling.
 
-## Quick Start
-- Prerequisites: Node.js 18+, npm
-- Install dependencies:
-  - `npm install`
-- Start development server:
-  - `npm run dev`
-- Open the app:
-  - http://localhost:5173/
+## 🚀 Key Capabilities
+- Biometric Extraction: Real‑time palm feature analysis using OpenCV‑based digital image processing.
+- Behavioral Modeling: Advanced inference engine for generating cognitive, emotional, and career profiles.
+- AI Interaction: Context‑aware analysis assistant for interpreting complex biometric datasets.
+- Technical Reporting: Automated generation of comprehensive PDF analysis reports.
+- Data Persistence: Longitudinal tracking of biometric indices using MongoDB.
 
-## Backend Integration
-- The frontend proxies API calls to the backend at http://localhost:8000
-- Proxy config is defined in [vite.config.js](./vite.config.js)
-- Recommended: run backend before using analysis and report features
+## 🛠️ Technology Stack
+- Frontend: React 18, Tailwind CSS, Framer Motion, Vite
+- Backend: FastAPI, Python 3.12, Motor (Async MongoDB)
+- AI/CV: OpenCV, NumPy, Pillow
+- Database: MongoDB
 
-## Key Pages
-- Dashboard: navigation to core features
-- Analysis: upload/capture image, run AI analysis, view descriptive results, download PDF
-- History: review past analyses with scores and timestamps
-- Profile: manage account and latest palm report
-- Admin: system metrics and user list (requires admin role)
+## 📦 Installation & Deployment
 
-## Demo Flow
-- Login or register any user
-- Go to Analysis:
-  - Upload a palm image or use Live Camera
-  - Click “Analyze Palm”
-  - Review Vitality, Cognitive, Emotional scores
-  - Read the descriptive lines under each card
-  - Click “Download Report” to export a descriptive PDF
-- Open History to review previous scans
+### Prerequisites
+- Python 3.12+
+- Node.js 18+
+- MongoDB Instance
 
-## Tech Stack
-- React, Vite, Tailwind CSS, Framer Motion
-- axios, react‑router‑dom, lucide‑react
+### Backend Setup
+```bash
+cd backend
+pip install -r requirements.txt
+# Configure .env from .env.example
+uvicorn main:app --reload
+```
 
-## Linting
-- Run: `npm run lint`
-- Fix common issues before demo
+### Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## Notes
-- SVG icons from lucide‑react and inline SVGs use the standard namespace:
-  - `xmlns="http://www.w3.org/2000/svg"`
-  - Ensures consistent rendering across browsers
+## 📊 System Workflow
+- Acquisition: Image capture via high‑resolution webcam or file upload.
+- Preprocessing: Grayscale conversion and Gaussian noise reduction.
+- Segmentation: ROI‑based segmentation for vitality, cognitive, and emotional mapping.
+- Inference: Rule‑based mapping of edge density to behavioral archetypes.
+- Output: Multi‑dimensional visualization and technical PDF reporting.
+
+## 📁 Project Architecture
+```
+BIOMETRIC-AI/
+├── backend/                  # API & Logic Core
+│   ├── main.py               # FastAPI Entry Point
+│   ├── ai_engine.py          # CV & Feature Extraction
+│   └── users.json            # Seed Data
+├── frontend/                 # User Interface
+│   ├── src/
+│   │   ├── pages/            # Dashboard, Analysis, Profile, etc.
+│   │   └── components/       # Layout & Reusable UI
+│   └── tailwind.config.js    # Design System Configuration
+└── PROJECT_REPORT.md         # Technical Documentation
+```

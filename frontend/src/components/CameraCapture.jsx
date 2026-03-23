@@ -7,31 +7,123 @@ const CameraCapture = ({ onCapture, onClose }) => {
   const [stream, setStream] = useState(null);
   const [error, setError] = useState(null);
   const [captured, setCaptured] = useState(false);
+  const startRef = useRef(null);
+  const initializedRef = useRef(false);
+  const [devices, setDevices] = useState([]);
+  const [deviceId, setDeviceId] = useState('');
 
   useEffect(() => {
+    if (initializedRef.current) return;
+    initializedRef.current = true;
+
     const startCamera = async () => {
+      setError(null);
+      // Try back camera first; fallback to front/user camera
+      const tryConstraints = async (constraints) => {
+        return await navigator.mediaDevices.getUserMedia(constraints);
+      };
       try {
-        const mediaStream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: 'environment' } // Use back camera for better palm scanning quality
-        });
+        const mediaStream = await tryConstraints(
+          deviceId
+            ? { video: { deviceId: { exact: deviceId } } }
+            : {
+                video: {
+                  facingMode: { ideal: 'environment' },
+                  width: { ideal: 1280 },
+                  height: { ideal: 720 }
+                }
+              }
+        );
         setStream(mediaStream);
         if (videoRef.current) {
           videoRef.current.srcObject = mediaStream;
         }
-      } catch (err) {
-        setError('Camera access denied or not available');
-        console.error('Camera error:', err);
+        try {
+          const all = await navigator.mediaDevices.enumerateDevices();
+          const cams = all.filter(d => d.kind === 'videoinput');
+          setDevices(cams);
+          if (!deviceId && cams.length > 0) {
+            setDeviceId(cams[0].deviceId);
+          }
+        } catch {
+          // ignore enumerate failure
+        }
+      } catch {
+        try {
+          const mediaStream = await tryConstraints({
+            video: {
+              facingMode: { ideal: 'user' },
+              width: { ideal: 1280 },
+              height: { ideal: 720 }
+            }
+          });
+          setStream(mediaStream);
+          if (videoRef.current) {
+            videoRef.current.srcObject = mediaStream;
+          }
+          try {
+            const all = await navigator.mediaDevices.enumerateDevices();
+            const cams = all.filter(d => d.kind === 'videoinput');
+            setDevices(cams);
+            if (!deviceId && cams.length > 0) {
+              setDeviceId(cams[0].deviceId);
+            }
+          } catch {
+            // ignore enumerate failure
+          }
+        } catch (err) {
+          try {
+            const mediaStream = await tryConstraints({ video: true });
+            setStream(mediaStream);
+            if (videoRef.current) {
+              videoRef.current.srcObject = mediaStream;
+            }
+            try {
+              const all = await navigator.mediaDevices.enumerateDevices();
+              const cams = all.filter(d => d.kind === 'videoinput');
+              setDevices(cams);
+              if (!deviceId && cams.length > 0) {
+                setDeviceId(cams[0].deviceId);
+              }
+            } catch {
+              // ignore enumerate failure
+            }
+          } catch (finalErr) {
+            setError('Camera access denied or not available. Please allow camera permissions and ensure no other app is using the camera.');
+            console.error('Camera error:', finalErr);
+            return;
+          }
+          console.error('Camera error:', err);
+        }
       }
     };
-
-    startCamera();
+    startRef.current = startCamera;
+    const checkDevices = async () => {
+      try {
+        const all = await navigator.mediaDevices.enumerateDevices();
+        const cams = all.filter(d => d.kind === 'videoinput');
+        if (cams.length === 0) {
+          setError('No camera devices detected. Please connect a camera and refresh.');
+          return false;
+        }
+        return true;
+      } catch (e) {
+        console.error('Enumerate devices failed:', e);
+        // Proceed to attempt camera; some browsers require getUserMedia before labels appear
+        return true;
+      }
+    };
+    checkDevices().then(hasDevices => {
+      if (hasDevices) startCamera();
+    });
 
     return () => {
-      if (stream) {
-        stream.getTracks().forEach(track => track.stop());
+      const s = videoRef.current && videoRef.current.srcObject;
+      if (s && typeof s.getTracks === 'function') {
+        s.getTracks().forEach(track => track.stop());
       }
     };
-  }, []);
+  }, [deviceId]);
 
   const captureImage = () => {
     if (!videoRef.current || !canvasRef.current) return;
@@ -61,6 +153,29 @@ const CameraCapture = ({ onCapture, onClose }) => {
     }
     onClose();
   };
+  
+  const retryCamera = async () => {
+    // Stop existing stream if any
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+      setStream(null);
+    }
+    setCaptured(false);
+    if (startRef.current) {
+      await startRef.current();
+    }
+  };
+  
+  const useSelectedCamera = async () => {
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+      setStream(null);
+    }
+    setCaptured(false);
+    if (startRef.current) {
+      await startRef.current();
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
@@ -80,11 +195,39 @@ const CameraCapture = ({ onCapture, onClose }) => {
             Position your palm clearly in the frame and ensure good lighting for accurate analysis.
           </div>
         )}
+        
+        {!captured && devices.length > 0 && (
+          <div className="mb-4 flex items-center gap-2">
+            <select
+              value={deviceId}
+              onChange={(e) => setDeviceId(e.target.value)}
+              className="flex-1 bg-gray-800 text-white border border-gray-700 rounded px-3 py-2"
+            >
+              {devices.map(d => (
+                <option key={d.deviceId} value={d.deviceId}>
+                  {d.label || 'Camera'}
+                </option>
+              ))}
+            </select>
+            <button
+              onClick={useSelectedCamera}
+              className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Use Selected
+            </button>
+          </div>
+        )}
 
         {error ? (
           <div className="text-red-400 text-center py-8">
             {error}
             <br />
+            <button
+              onClick={retryCamera}
+              className="mt-4 mr-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Retry Camera
+            </button>
             <button
               onClick={closeCamera}
               className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
