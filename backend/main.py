@@ -8,7 +8,7 @@ import json
 import os
 import random
 import bcrypt
-from ai_engine import PalmAI
+from .ai_engine import PalmAI
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 import motor.motor_asyncio
